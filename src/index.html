@@ -1,16 +1,22 @@
 ---
-title: Home
+title: Goodbyte, and Good Luck
 ---
+<div class="row">
+  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+    <h3>Quick Links</h3>
+      <button class="btn btn-link">Projects</button>
+      <button class="btn btn-link">Computing</button>
+      <button class="btn btn-link">Conlanging</button>
+      <button class="btn btn-link">Philosophy</button>
+      <button class="btn btn-link">Resources</button>
 
-<h2>Welcome</h2>
-
-<img src="/img/haskell-logo.png" style="float: right; margin: 10px;" />
-
-<p>Welcome to my blog!</p>
-
-<p>I've reproduced a list of recent posts here for your reading pleasure:</p>
-
-<h2>Posts</h2>
-$partial("templates/post-list.html")$
-
-<p>…or you can find more in the <a href="/archive.html">archives</a>.</p>
+    <h3>Recently</h3>
+      $partial("templates/post-list.html")$
+  </div>
+  <div id="feed" class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
+    <h3>Feed</h3>
+    <ul class="list-unstyled">
+      <li>Something has happened, I'll let you know what it was later.</li>
+    </ul>
+  </div>
+</div>
