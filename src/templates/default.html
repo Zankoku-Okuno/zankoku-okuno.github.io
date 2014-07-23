@@ -1,22 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-  $partial("templates/base/head.html")$
-</head>
-<body>
-  $partial("templates/base/navbar.html")$
-  <div class="container">
-    <div class="row">
-      <div id="main-content" class="col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-10 col-sm-12 col-xs-12">
-        <div class="jumbotron">
-            <h1>Goodbyte,&nbsp;and<br>Good&nbsp;Luck</h1>
-            <hr>
-            <small>Don't you know better than to wake a man at three in the afternoon?</small>
-        </div>
-        $body$
-      </div>
-    </div>
-    $partial("templates/base/footer.html")$
-  </div>
-</body>
-</html>
+<div class="jumbotron">
+    <h1>$title$</h1>
+    <hr>
+    $if(tagline)$
+      <small>$tagline$</small>
+    $else$
+      <small>Don't you know better than to wake a man at three in the afternoon?</small>
+    $endif$
+</div>
+<div id="main-content">
+  $body$
+</div>

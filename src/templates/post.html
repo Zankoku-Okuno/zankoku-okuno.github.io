@@ -1,8 +1,20 @@
-<div class="info">
-    Posted on $date$
-    $if(author)$
-        by $author$
+<div class="jumbotron">
+    <h1>$title$</h1>
+    <hr>
+    $if(tagline)$
+      <small>$tagline$</small>
+    $else$
+      <small>Don't you know better than to wake a man at three in the afternoon?</small>
     $endif$
 </div>
-
-$body$
+<div id="main-content" class="article">
+  <div class="well">
+    $if(author)$
+      by $author$
+    $endif$
+    <span class="small pull-right">$date$</span>
+    <p class="abstract">$abstract$</p>
+  </div>
+  $body$
+  <span class="pull-right">■</span>
+</div>

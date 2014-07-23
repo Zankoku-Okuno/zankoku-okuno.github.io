@@ -1,30 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  $partial("templates/base/head.html")$
-</head>
-<body>
-  $partial("templates/base/navbar.html")$
-  <div class="container">
-    <!-- CONTENT BODY -->
-    <div class="row">
-      <div id="main-content" class="col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-10 col-sm-12 col-xs-12">
-        <div class="jumbotron">
-          <h1>Mesdames, Messieurs, bon&nbsp;soir.</h1>
-          <hr>
-          <p>
-            <img src="/img/cmbr.gif" alt="Me and the comsic backround microwave radiation"
-                 class="pull-left img-rounded" style="margin-right:21px" height=100 width=100>
-            I’m Okuno Zankoku, and I’m a&nbsp;linguist, a&nbsp;computer scientist, a&nbsp;programmer, a&nbsp;musician, a&nbsp;physicist and a&nbsp;philosopher.
-          </p>
-        </div>
-        <p class="lead text-justify">
-          If that sounds impressive, it shouldn’t. I only know enough to know that I know nothing, and there’s so much left to be discovered. That said, I still have thoughts and opinions, of which many are gleaned from others, and I get tired of keeping them all for myself. The time has come for me to say “Here is my website,” and actually have it be there. Well, you’ve found it.
-        </p>
-        $body$
-      </div>
-    </div>
-    $partial("templates/base/footer.html")$
-  </div>
-</body>
-</html>
+<div class="jumbotron">
+  <h1>Mesdames, Messieurs, bon&nbsp;soir.</h1>
+  <hr>
+  <p>
+    <img src="/img/cmbr.gif" alt="Me and the comsic backround microwave radiation"
+         class="pull-left img-rounded" style="margin-right:21px" height=100 width=100>
+    I’m Okuno Zankoku, and I’m a&nbsp;linguist, a&nbsp;computer scientist, a&nbsp;programmer, a&nbsp;musician, a&nbsp;physicist and a&nbsp;philosopher.
+  </p>
+</div>
+<p class="lead text-justify">
+  If that sounds impressive, it shouldn’t. I only know enough to know that I know nothing, and there’s so much left to be discovered. That said, I still have thoughts and opinions, of which many are gleaned from others, and I get tired of keeping them all for myself. The time has come for me to say “Here is my website,” and actually have it be there. Well, you’ve found it.
+</p>
+<div id="main-content">
+  $body$
+</div>

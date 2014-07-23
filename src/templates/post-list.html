@@ -1,7 +1,12 @@
-<ul>
-    $for(posts)$
-        <li>
-            <a href="$url$">$title$</a> - $date$
-        </li>
-    $endfor$
-</ul>
+$for(posts)$
+  <div class="panel panel-default">
+    <div class="panel-heading">
+       <a href="$url$">$title$</a> - $date$
+    </div>
+    $if(abstract)$
+      <div class="panel-body abstract small">
+        <p>$abstract$</p>
+      </div>
+    $endif$
+  </div>
+$endfor$
