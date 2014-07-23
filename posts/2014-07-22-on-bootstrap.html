@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>On Bootstrap</title>
+<link rel="shortcut icon" href="../favicon.png" type="image/png">
+
+<!-- FIXME host these locally also -->
+<link href="http://fonts.googleapis.com/css?family=Alice" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap-theme.css">
+<link rel="stylesheet" href="../css/theme.css">
+<script src="../js/jquery-2.1.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+ <div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand large" href="../">Goodbyte, and Good Luck</a>
+  </div>
+  <div id="navbarCollapse" class="collapse navbar-collapse navbar-right">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Subjects <b class="caret"></b></a>
+        <ul role="menu" class="dropdown-menu">
+          <li><a href="../subject/computing.html">Computing</a></li>
+          <li><a href="../subject/conlanging.html">Conlanging</a></li>
+          <li><a href="../subject/philosophy.html">Philosophy</a></li>
+          <li><a href="../subject/writing.html">Writing</a></li>
+        </ul>
+      </li>
+      <li><a href="../archive.html">Archives</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+ </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div id="all-content" class="col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        <div class="jumbotron">
+    <h1>On Bootstrap</h1>
+    <hr>
+    
+      <small>Don't you know better than to wake a man at three in the afternoon?</small>
+    
+</div>
+<div id="main-content" class="article">
+  <div class="well">
+    
+      by Zankoku Okuno
+    
+    <span class="small pull-right">2014-07-22</span>
+    <p class="abstract">The strengths and weaknesses of Bootstrap are examined. In many ways, Bootstrap is an innovative and powerful collection of presentational tools. In everyday use however, it can be a hindrance to building sites for long-term use and maintenance by inducing coupling between semantics and presentation, between developers and designers, and between your service and Bootstrap.</p>
+  </div>
+  <p>Recently at work, a coworker and I were struggling with Bootstrap, mainly because we didn’t know much of anything about it. Well, I decided that night to go home and learn about what I was doing. That’s exactly what I did, but along the way, I ran into <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">a short criticism</a> along the way. And that guy <a href="https://coderwall.com/p/wixovg">wasn’t alone</a>, either. Two weeks later now, and I’m hunting through my browsing history to find it again. It stuck with me because it was right.</p>
+<h1 id="where-bootstrap-fails">Where Bootstrap Fails</h1>
+<p>When I first began using Bootstrap, I noticed something, and it wasn’t long before I put it into words: “If you’re going to use Bootstrap, you need to really buy into it whole-cloth.” If that insight doesn’t make you think twice about using Bootstrap as advertised, I don’t know what will.</p>
+<h2 id="the-high-level-argument">The High-Level Argument</h2>
+<p>Of course, the experts went deeper into the issue than I initially did. Dan Tao has a <a href="https://coderwall.com/p/wixovg">very well-written piece</a> that discusses Bootstrap as a technical debt, how to make the best of it. Over at <a href="http://ruby.bvision.com/blog/please-stop-embedding-bootstrap-classes-in-your-html">BVision</a>, writers immediately noticed the architectural flaws, and after they finish the old “separate presentation from markup” tune, they give some good examples of how to immediately start using Bootstrap right.</p>
+<p>So, Bootstrap mixes presentation with markup. It induces technical debt. So what? Bootstrap is making my site pretty, and I don’t detect any significant code smell. Well, I was with you not so long ago.</p>
+<h2 id="the-real-world-evidence">The Real-World Evidence</h2>
+<p>One thing I like is justified text. Maybe I’m old-fashioned, or maybe I’ve been reading too many beautiful LaTeX-typeset articles, but I wanted justified text on my site. I don’t use CSS all that often, so I didn’t immediately remember the property, or whether I needed some kind of compatibility workaround. I had the Bootstrap docs already open, so I took a quick look and found <code>class=&quot;text-justify&quot;</code>.</p>
+<p>As I customized stuff later, I found I needed to add justified text to a larger set of properties, so I took a look at the Bootstrap CSS, and low-and-behold, I found this gem:</p>
+<pre class="sourceCode css"><code class="sourceCode css"><span class="fl">.text-justify</span> <span class="kw">{</span>
+  <span class="kw">text-align:</span> <span class="dt">justify</span><span class="kw">;</span>
+<span class="kw">}</span></code></pre>
+<p>Need I even mention that there’s no appreciable difference between <code>&lt;p class=&quot;text-justify&quot;&gt;</code> and <code>&lt;p style=&quot;text-align:justify&quot;&gt;</code>? Because there isn’t an appreciable difference. If you didn’t before, you now know what the code smells like. Everything wrong with <code>style</code> is just as wrong with so many Bootstrap classes. This is where I was well-and-truly convinced that Bootstrap as it is commonly used is a real problem.</p>
+<h1 id="where-bootstrap-succeeds">Where Bootstrap Succeeds</h1>
+<p>The thing about Bootstrap is that the smell it induces is not inherent. There are plenty of ways in which Bootstrap is very effective:</p>
+<h2 id="as-a-quick-fix">As a Quick Fix</h2>
+<p>The site is meant to be small. The site is a throwaway, as for a proof-of-concept. The investment of doing more CSS work won’t pay off. These are all good reasons, though you have to be wary. Sites don’t like to stay small, proofs-of-concept tend to evolve into production, and you might simply have judged the investment wrong.</p>
+<p>And then sometimes, you’re just throwing up a one- or two-page advertising drive for two weeks. Since you’re already offering two-for-one pizzas, it’s not worth wasting time and money to take the extra time and put a solid architecture together for something that’s little more than a poster on the side of a wall.</p>
+<h2 id="sometimes-the-debt-doesnt-matter">Sometimes, the Debt Doesn’t Matter</h2>
+<p>Site generation tools: template engines and markdown compilers. When you’re tools are configured to always spew out the appropriate presentational classes in exactly the appropriate places, there’s no extra work for the humans. All you have to do is go to this one place in this one file and change a little something. This is perfectly DRY and maintainable.</p>
+<p>Site generators are simply based in metaprogramming, which has a wonderful ability to clean up the source. Embedding presentation into <em>generated</em> markup is usually just fine. It works out even better than Lisp macros, given that CSS and HTML scoping rules are so simple we need never worry about hygiene. You might worry about bandwidth if you’re generating massive <code>style</code> attributes, but generating a few Bootstrap <code>class</code>es is not a big deal.</p>
+<h2 id="as-a-great-read-to-learn-by">As a Great Read to Learn By</h2>
+<p>The guys over at Twitter have put in a lot of work to make their stylesheets effective cross-browser. Don’t know how well rounded corners are supported? Copy the code from <code>bootstrap.css</code> and don’t worry too hard. For myself, I didn’t even realize the <code>@media (min-width: 137px)</code> syntax could be something that existed until I read the CSS.</p>
+<h2 id="use-the-source-luke">Use the Source, Luke</h2>
+<p>The actual Bootstrap source code is <a href="http://lesscss.org/">LESS</a> code, and it has also been ported to <a href="http://sass-lang.com/">SASS</a> if that’s more your cup of tea. The best course of action for a strong website is to use what Bootstrap has already developed, but in mixin form. This way, you can have all the familiar Bootstrap presentation logic, but use only semantic markup. The articles I linked in the intro suggest this approach as well, and I leave it to them to show what this technique looks like.</p>
+<p>There’s a strong possibility I may go down this road even further. Likely, I will switch to <a href="http://learnboost.github.io/stylus/">Stylus</a>, and either find the stuff I need implemented in Stylus directly, or port the useful parts of Bootstrap over. If there’s enough work involved, I may release it as μboot, or something.</p>
+<h1 id="in-conclusion">In Conclusion</h1>
+<p>Use Bootstrap, but go deeper.</p>
+<p>Don’t stop at what the official documentation or what the various tutorials tell you. Read the source, modify the source, and write your own source using their code.</p>
+<p>Where you can’t or won’t go deeper, the semantics of your site will be polluted. Bots will struggle to index your site, coders and designers will involve each other in needless communicative overhead, and you will be locked-in to Bootstrap for good or ill.</p>
+<p>Thankfully, the source is quite easy to understand.</p>
+  <span class="pull-right">■</span>
+</div>
+      </div>
+    </div>
+    <div class="row">
+  <div class="col-xs-12">
+    <footer = class="small">
+      <hr>
+      <ul class="list-inline">
+        <li><a href="https://github.com/Zankoku-Okuno/zankoku-okuno.github.io/">Source Code</a></li>
+        <li><a href="http://jaspervdj.be/hakyll/">Hakyll</a></li>
+        <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+        <li class="pull-right">© 2014 Zankoku Okuno</li>
+      </ul>
+      <!-- technologies, hosting, link to repo -->
+      <!-- this might be a good place for a horizontal list -->
+    </footer>
+  </div>
+</div>
+  </div>
+</body>
+</html>
