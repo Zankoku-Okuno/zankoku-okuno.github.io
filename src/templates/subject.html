@@ -1,0 +1,14 @@
+<div class="jumbotron">
+  <h1>$title$</h1>
+  <hr>
+  $if(tagline)$
+    <small>$tagline$</small>
+  $else$
+    <small>Don't you know better than to wake a man at three in the afternoon?</small>
+  $endif$
+</div>
+<div id="main-content">
+  $body$
+  <h3>Recently</h3>
+  $partial("templates/post-list.html")$
+</div>

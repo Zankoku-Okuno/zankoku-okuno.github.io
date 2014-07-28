@@ -1,8 +1,11 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
+import qualified Data.Set as Set
 import           Data.Monoid
 import           Control.Applicative
+import           Control.Monad
 import           Hakyll
+import           Text.Pandoc.Options
 
 
 --------------------------------------------------------------------------------
@@ -12,56 +15,66 @@ main = hakyll $ do
         route idRoute
         compile $ do
             posts <- take 5 <$> loadAllPostsAndStories
-            let indexCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    defaultContext
-
+            let indexCtx = mconcat
+                    [ listField "posts" postCtx (return posts)
+                    , defaultContext
+                    ]
             getResourceBody
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/intro.html" indexCtx
                 >>= loadAndApplyTemplate "templates/base.html" indexCtx
                 >>= relativizeUrls
     
-    match (fromList ["about.md", "contact.md"]) $ do
+    match (fromList ["about.md", "contact.md", "resources.md"]) $ do
         route   $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocExtCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= loadAndApplyTemplate "templates/base.html" defaultContext
             >>= relativizeUrls
 
     match "subject/*" $ do
         route   $ setExtension "html"
-        compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/default.html" defaultContext
-            >>= loadAndApplyTemplate "templates/base.html" defaultContext
-            >>= relativizeUrls
+        compile $ do
+            subject <- flip getMetadataField' "subject" =<< getUnderlying
+            let sameSubject item = do
+                let ident = itemIdentifier item
+                subject' <- getMetadataField ident "subject"
+                return $ subject' == Just subject
+            posts <- filterM sameSubject =<< loadAllPostsAndStories
+            let subjectCtx = mconcat
+                    [ listField "posts" postCtx (return posts)
+                    , defaultContext
+                    ]
+            getResourceBody
+                >>= applyAsTemplate subjectCtx
+                >>= loadAndApplyTemplate "templates/subject.html"  subjectCtx
+                >>= loadAndApplyTemplate "templates/base.html"  subjectCtx
+                >>= relativizeUrls
 
     match "posts/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocExtCompiler
             >>= loadAndApplyTemplate "templates/post.html" postCtx
             >>= loadAndApplyTemplate "templates/base.html" postCtx
             >>= relativizeUrls
 
     match "stories/*" $ do
         route $ setExtension "html"
-        compile $ pandocCompiler
+        compile $ pandocExtCompiler
             >>= loadAndApplyTemplate "templates/story.html" postCtx
             >>= loadAndApplyTemplate "templates/base.html" postCtx
             >>= relativizeUrls
 
-    create ["archive.html"] $ do
+    match "archive.html" $ do
         route idRoute
         compile $ do
             posts <- loadAllPostsAndStories
             let archiveCtx = mconcat
                     [ listField "posts" postCtx (return posts)
-                    , constField "title" "Archives"
                     , defaultContext
                     ]
-
-            makeItem ""
-                >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
+            getResourceBody
+                >>= applyAsTemplate archiveCtx
                 >>= loadAndApplyTemplate "templates/default.html" archiveCtx
                 >>= loadAndApplyTemplate "templates/base.html" archiveCtx
                 >>= relativizeUrls
@@ -96,3 +109,8 @@ postCtx :: Context String
 postCtx =
     dateField "date" "%Y-%m-%d" `mappend`
     defaultContext
+
+pandocExtCompiler = pandocCompilerWith rOpts wOpts
+    where
+    rOpts = def { readerExtensions = Set.fromList [Ext_footnotes] }
+    wOpts = def { writerExtensions = Set.fromList [Ext_footnotes] }
