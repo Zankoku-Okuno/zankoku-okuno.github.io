@@ -26,14 +26,14 @@ main = hakyll $ do
                 >>= relativizeUrls
     
     match (fromList ["about.md", "contact.md", "resources.md"]) $ do
-        route   $ setExtension "html"
+        route $ setExtension "html"
         compile $ pandocExtCompiler
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= loadAndApplyTemplate "templates/base.html" defaultContext
             >>= relativizeUrls
 
-    match "subject/*" $ do
-        route   $ setExtension "html"
+    match "subject/*.html" $ do
+        route $ idRoute
         compile $ do
             subject <- flip getMetadataField' "subject" =<< getUnderlying
             let sameSubject item = do
@@ -50,6 +50,13 @@ main = hakyll $ do
                 >>= loadAndApplyTemplate "templates/subject.html"  subjectCtx
                 >>= loadAndApplyTemplate "templates/base.html"  subjectCtx
                 >>= relativizeUrls
+
+    match "subject/*/*.md" $ do
+        route $ setExtension "html"
+        compile $ pandocExtCompiler
+            >>= loadAndApplyTemplate "templates/default.html" defaultContext
+            >>= loadAndApplyTemplate "templates/base.html" defaultContext
+            >>= relativizeUrls
 
     match "posts/*" $ do
         route $ setExtension "html"
@@ -82,19 +89,19 @@ main = hakyll $ do
     match "templates/**" $ compile templateCompiler
 
     match "js/*" $ do
-        route   idRoute
+        route idRoute
         compile copyFileCompiler
     match "css/*" $ do
-        route   idRoute
+        route idRoute
         compile compressCssCompiler
     match "img/*" $ do
-        route   idRoute
+        route idRoute
         compile copyFileCompiler
     match "fonts/*" $ do
-        route   idRoute
+        route idRoute
         compile copyFileCompiler
     match "favicon.*" $ do
-        route   idRoute
+        route idRoute
         compile copyFileCompiler
 
 
