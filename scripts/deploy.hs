@@ -39,6 +39,7 @@ main = shelly $ escaping False $ do
                 cmd "runghc" "site.hs" "clean"
                 cmd "runghc" "site.hs" "build"
             cmd "cp" "-r" "src/_site/*" "."
+            git "add" `mapM_` generated_files
             git "com" "-m" "publish"
             git "push"
-            echo "SUCCESS"
+        echo "SUCCESS"
