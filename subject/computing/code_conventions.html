@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Geneva Code Conventions</title>
+<link rel="shortcut icon" href="../../favicon.png" type="image/png">
+
+<!-- FIXME host these locally also -->
+<link href="http://fonts.googleapis.com/css?family=Alice" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="../../css/bootstrap.css">
+<link rel="stylesheet" href="../../css/bootstrap-theme.css">
+<link rel="stylesheet" href="../../css/theme.css">
+<script src="../../js/jquery-2.1.1.js"></script>
+<script src="../../js/bootstrap.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+ <div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand large" href="../../">Goodbyte, and Good Luck</a>
+  </div>
+  <div id="navbarCollapse" class="collapse navbar-collapse navbar-right">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Subjects <b class="caret"></b></a>
+        <ul role="menu" class="dropdown-menu">
+          <li><a href="../../subject/computing.html">Computing</a></li>
+          <li><a href="../../subject/conlanging.html">Conlanging</a></li>
+          <li><a href="../../subject/philosophy.html">Philosophy</a></li>
+          <li><a href="../../subject/writing.html">Writing</a></li>
+        </ul>
+      </li>
+      <li><a href="../../archive.html">Archives</a></li>
+      <li><a href="../../about.html">About</a></li>
+      <li><a href="../../contact.html">Contact</a></li>
+    </ul>
+  </div>
+ </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div id="all-content" class="col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        <div class="jumbotron">
+    <h1>Geneva Code Conventions</h1>
+    <hr>
+    
+      <small>Don't you know better than to wake a man at three in the afternoon?</small>
+    
+</div>
+<div id="main-content">
+  <p>NOTE: This document is under active development. Feel free to suggest more on <a href="https://github.com/Zankoku-Okuno/zankoku-okuno.github.io/issues">github</a>.</p>
+<p>It seems, from a quick google, that the general assumption is that coding conventions are language-specific. This is a bit silly. Sure, there are definitely spots where the language has some consequences, but the most useful conventions are cross-language. Therefore, I propose the Geneva Inter-Language Code Conventions.</p>
+<p>I've consciously made these points concise to the point of snark. If you can't see behind the words, you don't have the ability to apply these guidelines.</p>
+<p>Sometimes, a language will not have the features to support these conventions. Sometimes, it's because the feature isn't needed, but sometimes it's because the language design has a bug. Use these guidelines during language design to avoid sadness.</p>
+<h1>Miscellany</h1>
+<ul>
+<li>A language is mostly idioms.</li>
+<li>Spaces just look right, without reconfiguring your editor.</li>
+<li>It's quicker to edit in one place than two.</li>
+<li>The best code is no code.</li>
+<li>Every mistake that can be made, will be made.</li>
+</ul>
+<h1>Choosing Names</h1>
+<ul>
+<li>Don't introduce names that are only used once.</li>
+<li>Don't name things after their namespace.</li>
+</ul>
+<h1>Sectioning Code</h1>
+<ul>
+<li>Don't let a line go beyond a single screen width.</li>
+<li>If you can't fit an expression on one line, introduce a one-use name.</li>
+<li>If a function can't fit in one screen, break it up.</li>
+<li>If you can't fit a module in 1024 lines, break it up.</li>
+<li>Most of your code should be well below these size limits.</li>
+</ul>
+<h1>Documentation</h1>
+<ul>
+<li>Delete all circular definitions.</li>
+<li>Don't document the language.</li>
+<li>If you can't describe some part of the interface, it shouldn't be there.</li>
+<li>If you don't document the architecture, no one will understand it.</li>
+<li>If you don't provide examples, no one will use it.</li>
+<li>If you rely only on API documentation generators, you'll miss out on most of the documentation.</li>
+</ul>
+<h1>Architecture</h1>
+<ul>
+<li>If it doesn't compose safely, it's a problem.</li>
+</ul>
+<h1>Environment</h1>
+<ul>
+<li>If it's not version controlled, it never existed.</li>
+<li>If it can't build from scratch, no one will contribute.</li>
+</ul>
+</div>
+      </div>
+    </div>
+    <div class="row">
+  <div class="col-xs-12">
+    <footer class="small">
+      <hr>
+      <ul class="list-inline">
+        <li><a href="https://github.com/Zankoku-Okuno/zankoku-okuno.github.io/">Source Code</a></li>
+        <li><a href="http://jaspervdj.be/hakyll/">Hakyll</a></li>
+        <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+        <li class="pull-right">© 2014 Zankoku Okuno</li>
+      </ul>
+      <!-- technologies, hosting, link to repo -->
+      <!-- this might be a good place for a horizontal list -->
+    </footer>
+  </div>
+</div>
+  </div>
+</body>
+</html>

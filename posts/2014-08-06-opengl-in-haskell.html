@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>OpenGL in Haskell</title>
+<link rel="shortcut icon" href="../favicon.png" type="image/png">
+
+<!-- FIXME host these locally also -->
+<link href="http://fonts.googleapis.com/css?family=Alice" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=EB+Garamond" rel="stylesheet" type="text/css">
+
+<link rel="stylesheet" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootstrap-theme.css">
+<link rel="stylesheet" href="../css/theme.css">
+<script src="../js/jquery-2.1.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+ <div class="container-fluid">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand large" href="../">Goodbyte, and Good Luck</a>
+  </div>
+  <div id="navbarCollapse" class="collapse navbar-collapse navbar-right">
+    <ul class="nav navbar-nav">
+      <li class="dropdown">
+        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Subjects <b class="caret"></b></a>
+        <ul role="menu" class="dropdown-menu">
+          <li><a href="../subject/computing.html">Computing</a></li>
+          <li><a href="../subject/conlanging.html">Conlanging</a></li>
+          <li><a href="../subject/philosophy.html">Philosophy</a></li>
+          <li><a href="../subject/writing.html">Writing</a></li>
+        </ul>
+      </li>
+      <li><a href="../archive.html">Archives</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </div>
+ </div>
+</nav>
+  <div class="container">
+    <div class="row">
+      <div id="all-content" class="col-lg-offset-2 col-md-offset-1 col-lg-8 col-md-10 col-sm-12 col-xs-12">
+        <div class="jumbotron">
+    <h1>OpenGL in Haskell</h1>
+    <hr>
+    
+      <small>Don't you know better than to wake a man at three in the afternoon?</small>
+    
+</div>
+<div id="main-content" class="article">
+  <div class="well">
+    
+      by Zankoku Okuno
+    
+    <span class="small pull-right">2014-08-06</span>
+    <p class="abstract">In university, I did some graphics programming in C/C++. I've been wanting to do some more, but have moved to Haskell, where the availability of tutorials is slim. Compounding that is the fact that I never truly understood OpenGL in the first place, I've been largely out in the cold lately. In response, I've decided to learn to use Haskell for OpenGL programming by porting tutorials.</p>
+  </div>
+  <p>At this point, I'm just experimenting: trying to get things to work, re-ordering thing until they break that sort of thing. I've found that my iteration time is much shorter in Haskell than it was in C++, probably because Haskell control flow is so much more straightforward. Even so, having to do science just to figure out how OpenGL works is well below sub-standard.</p>
+<h2>How I am Learning OpenGL</h2>
+<p>In my attempt to re-learn OpenGL, I've found some serious flaws in how these tutorials get written:</p>
+<ul>
+<li>They teach the direct draw interface. This was deprecated in 3.0; I think it's removed in 4.0. It should not be used for new code, so I will not learn it, and I will not teach it, according to the fundamental principles of our father, The Great Deprecator.</li>
+<li>They quickly get mired in jargon and/or magic. A name like &quot;vertex attribute array&quot; is totally opaque. I'm still not sure I get it. Everyone says &quot;use this magic code&quot; or &quot;it's a jargonjargonjargon&quot;. Why? As far as I can tell, nothing about the data/execution model is really that complicated.</li>
+</ul>
+<p>Having just spewed out a bunch of harsh, these tutorials are still the best we've got. I can't even enumerate all the pieces of the puzzle I've found out there<a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, but here are most of them, in no particular order:</p>
+<ul>
+<li><a href="http://onlygraphix.com/category/3d/">OnlyGraphics</a></li>
+<li><a href="http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Table-of-Contents.html">An Intro to Modern OpenGL</a></li>
+<li><a href="http://www.arcadianvisions.com/blog/?p=224">Modern OpenGL with Haskell</a></li>
+<li><a href="http://www.arcadianvisions.com/blog/?p=388">Postmodern Haskell and OpenGL: Introducing vinyl-gl</a></li>
+<li><a href="http://dmytrish.wordpress.com/2013/01/12/haskell-opengl-animation-done-right/">Haskell OpenGL animation done right</a></li>
+<li><a href="http://www.tapdancinggoats.com/opengl-in-haskell-glfw-b-boilerplate.htm">OpenGL in Haskell: GLFW-b Boilerplate</a></li>
+<li><a href="https://www.opengl.org/wiki/Common_Mistakes">OpenGL Common Mistakes</a></li>
+<li><a href="http://www.opengl.org/wiki/Rendering_Pipeline_Overview">Rendering Pipeline Overview</a></li>
+<li><a href="https://github.com/bergey/haskell-OpenGL-examples">haskell-OpenGL-examples</a></li>
+<li><a href="http://www.opengl-tutorial.org/">Tutorials for modern OpenGL</a></li>
+<li><a href="http://www.swiftless.com/opengl4tuts.html">Swiftless OpenGL 4 Tutorials</a></li>
+<li><a href="http://www.lastrayofhope.co.uk/2011/07/30/using-vertex-array-objects/">Using Vertex Array Objects</a></li>
+</ul>
+<h2>How I want to Teach OpenGL</h2>
+<p>As a programmer, I am intimately familiar with the idea of bytes of data stored in memory and instructions operating on that data. That is how a computer fundamentally works, and OpenGL is not much different. With OpenGL, or any other library providing access to a graphics card, there are simply two computers, each with memory and an instruction set. The only &quot;trick&quot; is getting the two to communicate.</p>
+<p>There's no trick to the communication either. We JIT compile a program (shader). We can allocate memory (buffers) and load our data in. We describe the format of the data (attribute arrays?). We kick off our program passing our data in; some of this data is simple values, others are drawn from buffers, which may have a fairly complex format.</p>
+<p>Is that really any more difficult than <code>./cube --eye 1,2,3 &lt;texture.tiff</code>? From what I understand now, this metaphor continues to hold up, even as you optimize your rendering code. There's no reason to make the student learn a bunch of new terms until the concepts are there, and there's no reason to act like the student cares about the details like an professional would.</p>
+<p>When we first started programming, we started with simple programs that were unfit for production. Remember the times when you wouldn't worry about the <code>IOException</code> that would crash your program just because of a missing file? That was the correct way to start learning: simplified. Only later would you learn what made it tick. OpenGL really is a whole new programming experience, and it should start roughly where we started programming.</p>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>No, really. Thanks to a mis-designed UI, I lost a ton of tabs.<a href="#fnref1">↩</a></p></li>
+</ol>
+</div>
+  <span class="pull-right">■</span>
+</div>
+      </div>
+    </div>
+    <div class="row">
+  <div class="col-xs-12">
+    <footer class="small">
+      <hr>
+      <ul class="list-inline">
+        <li><a href="https://github.com/Zankoku-Okuno/zankoku-okuno.github.io/">Source Code</a></li>
+        <li><a href="http://jaspervdj.be/hakyll/">Hakyll</a></li>
+        <li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+        <li class="pull-right">© 2014 Zankoku Okuno</li>
+      </ul>
+      <!-- technologies, hosting, link to repo -->
+      <!-- this might be a good place for a horizontal list -->
+    </footer>
+  </div>
+</div>
+  </div>
+</body>
+</html>
