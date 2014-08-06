@@ -110,6 +110,7 @@ main = hakyll $ do
 
 loadFeed :: Maybe Int -> Compiler [String]
 loadFeed limit = do
+    --FIXME each feed item in its own file labeled YYYY-MM-DD-HHMM
     contents <- itemBody <$> load "feed.md"
     return $ case limit of
         Nothing -> lines contents
