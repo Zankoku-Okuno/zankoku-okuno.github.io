@@ -18,8 +18,10 @@ Package Repos
 -------------
 
 * [Haskell](https://hackage.haskell.org/)
+* [TeX](http://www.ctan.org/)
+* [Python](https://pypi.python.org/pypi)
 
-TODO LaTeX, Python, &c
+TODO more
 
 Plan 9
 ------
@@ -45,6 +47,7 @@ Haskell
 * [IRC](http://webchat.freenode.net/?channels=haskell)
 
 * [The Monad Reader](http://themonadreader.wordpress.com/previous-issues/)
+* [Typeclassopedia](http://www.haskell.org/haskellwiki/Typeclassopedia)
 
 * [How to write a Haskell program](http://www.haskell.org/haskellwiki/How_to_write_a_Haskell_program)
 * [Cabal Guide](http://www.haskell.org/cabal/users-guide/)
@@ -55,6 +58,7 @@ Haskell
 
 * [Real-World Haskell](http://book.realworldhaskell.org/read/)
 * [Learn you a Haskell for Great Good!](http://learnyouahaskell.com/)
+* [Learn Haskell Fast and Hard](http://yannesposito.com/Scratch/en/blog/Haskell-the-Hard-Way/)
 
 * [Script: Upload Docs to Hackage](https://gist.github.com/stbuehler/7068764)
 
@@ -63,6 +67,7 @@ Lisps
 
 * [Series on S-exprs](https://igor.io/2012/12/06/sexpr.html)
 
+* [Racket](http://racket-lang.org/)
 TODO various impls (scheme, kernel, racket, clisp)
 
 Standard ML

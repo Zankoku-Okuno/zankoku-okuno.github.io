@@ -16,13 +16,13 @@ Languages
 I'm developing a suite of programming languages. No single programming language can handle all tasks. Each language brings modern principles of abstraction to a different field: scripting, application programming, system programming.
 
 * Octopus -- the full-metal abstraction programming language
-* Murex -- the friendly language that takes programming in the large seriously
+* Argo -- the friendly language that takes programming in the large seriously
 * Nautilus -- the no-nonsense, high-level systems programming language
 
 To do this, I need a specific set of tools to build my compilers and interpreters:
 
 * Luthor -- a suite of parsing and lexing utilities for building complex grammars
-* Distfix -- desugar distributed affixes
+* Distfix -- desugar distributed affixes (such as `_ ? _ : _` )
 * L3 -- cross-platform assembly
 
 Wishlist

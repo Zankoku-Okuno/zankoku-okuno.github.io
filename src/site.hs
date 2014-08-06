@@ -4,6 +4,7 @@ import qualified Data.Set as Set
 import           Data.Monoid
 import           Control.Applicative
 import           Control.Monad
+import           Control.Monad.IO.Class
 import           Hakyll
 import           Text.Pandoc.Options
 
@@ -106,6 +107,13 @@ main = hakyll $ do
 
 
 --------------------------------------------------------------------------------
+
+loadFeed :: Maybe Int -> Compiler [String]
+loadFeed limit = do
+    contents <- itemBody <$> load "feed.md"
+    return $ case limit of
+        Nothing -> lines contents
+        Just n -> take n $ lines contents
 
 loadAllPostsAndStories = do
     posts <- loadAll "posts/*"
