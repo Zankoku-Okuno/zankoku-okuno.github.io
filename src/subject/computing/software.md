@@ -23,17 +23,18 @@ To do this, I need a specific set of tools to build my compilers and interpreter
 
 * Luthor -- a suite of parsing and lexing utilities for building complex grammars
 * Distfix -- desugar distributed affixes (such as `_ ? _ : _` )
-* L3 -- cross-platform assembly
 
 Wishlist
 ========
 
 * Hajj -- a generic structured data model
+* Aladdin -- cross-platform assembly
 * port OpenGL tutorials to Haskell
 
 Longshots
 =========
 * unknown name -- a markdown engine written and configured in Haskell
 * Templar -- a templating engine
+* Hadron -- a language-agnostic build system
 * unknown name -- massive-scale turn-based strategy game
 * a series of alife simulations
