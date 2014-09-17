@@ -10,4 +10,8 @@ title: Quips
 
 * "Mutable state is the new spaghetti code."
 
-	This is incredibly spot-on. Just as `goto` make control flow too complex to trace, mutable state makes data flow too difficult to trace.
+	This is incredibly spot-on. Just as ubiquitous `goto` makes control flow too complex to trace, ubiquitous mutable state makes data flow too difficult to trace.
+
+* "Functions are for abstraction, but they leak without tail call optimization."
+
+* Dynamic languages are like hands without thumbs.
